@@ -14,3 +14,13 @@ Setup `thinkpad-wallpaper.png` as your desktop wallpaper.
 ```
 $ conky -q -c ~/.conky/Thinkpad/thinkpad-t440.conkyrc &> /dev/null
 ```
+
+# Screenshot
+
+- Thinkpad
+
+![](thinkpad-screenshot.gif)
+
+- Manjaro Tree
+
+![](manjaro-tree-screenshot.png)
