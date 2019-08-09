@@ -1,7 +1,7 @@
 
 conky.config = { 
 
-	background = false,
+	background = true,
 	use_xft = true,
 	font = 'Fira Code:weight=Bold:size=8.5',
 	xftalpha = 0.8,
@@ -10,7 +10,7 @@ conky.config = {
 	own_window = true,
 	own_window_transparent = true,
 	own_window_type = 'dock',
-	own_window_class = 'Conky',
+	own_window_class = 'conky',
 	own_window_argb_visual = true,
 	own_window_colour = '#000000',
 	own_window_argb_value = 150,
@@ -65,10 +65,10 @@ ${alignr}${offset 0}├── ${top name 1}  ${top pid 1} ${top cpu 1} ${top mem
 ${alignr}${offset 0}├── ${top name 2}  ${top pid 2} ${top cpu 2} ${top mem 2}
 ${alignr}${offset 0}├── ${top name 3}  ${top pid 3} ${top cpu 3} ${top mem 3}
 ${alignr}${offset 0}├── ${top name 4}  ${top pid 4} ${top cpu 4} ${top mem 4}
-${alignr}${offset 0}└── ${top name 5}  ${top pid 5} ${top cpu 5} ${top mem 5}
-
-
-
+${alignr}${offset 0}├── ${top name 5}  ${top pid 5} ${top cpu 5} ${top mem 5}
+${alignr}${offset 0}├── ${top name 6}  ${top pid 6} ${top cpu 6} ${top mem 6}
+${alignr}${offset 0}├── ${top name 7}  ${top pid 7} ${top cpu 7} ${top mem 7}
+${alignr}${offset 0}└── ${top name 8}  ${top pid 8} ${top cpu 8} ${top mem 8}
 
 ${offset 140}${color red}RPM${color} < ${exec sensors | grep "fan1" | cut -d" " -f9 | cut -d" " -f1} > ────────────────
 
@@ -78,7 +78,7 @@ ${alignr}${offset -75}───────────── ${color red}memory
 ${alignr}${offset -615}${color red}${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-25}${color} ───────
 
 ${offset 610}──────────────┌─── ${color red}${exec /home/ngoclb/.conky/Thinkpad/is_connected.sh}${color}
-${offset 701} ├── IP < ${exec ip addr show wlp3s0 | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/'} / ${execi 60 curl ipinfo.io/ip} >
+${offset 701} ├── IP < ${exec ip addr show $(ip addr show | awk '/inet.*brd/{print $NF; exit}') | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/'} / ${execi 60 curl ipinfo.io/ip} >
 ${offset 701} ├── UP   ${upspeedgraph wlp3s0 12,120 06E9F8 2804FA}
 ${offset 701} └── DOWN ${downspeedgraph wlp3s0 12,120 FFFF00 DD3A21}
 
